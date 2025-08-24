@@ -1,0 +1,104 @@
+/* ---------- Mood Uplift Arcade Styles ---------- */
+:root{
+  --bg:#0f172a;
+  --card:#111827;
+  --muted:#94a3b8;
+  --text:#e5e7eb;
+  --accent:#22d3ee;
+  --accent2:#a78bfa;
+  --good:#22c55e;
+  --bad:#ef4444;
+  --warn:#f59e0b;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 10% -10%, #1e293b 0%, #0b1020 60%, var(--bg) 100%);
+  color:var(--text);
+}
+
+.app-header, .app-footer{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; background:#0b1222; border-bottom:1px solid #1f2937;
+  position:sticky; top:0; z-index:10;
+}
+.app-footer{ position:static; border-top:1px solid #1f2937; border-bottom:none; justify-content:center; }
+
+h1{font-size: clamp(20px, 4vw, 28px); margin:0}
+nav{display:flex; gap:8px}
+.nav-btn{
+  background:#0f172a; border:1px solid #1f2937; color:var(--text);
+  padding:8px 12px; border-radius:12px; cursor:pointer; transition:0.2s;
+}
+.nav-btn:hover{ border-color:var(--accent); box-shadow:0 0 0 3px #22d3ee20; }
+
+#app{max-width:1100px; margin:24px auto; padding:0 16px;}
+
+.card{
+  background:linear-gradient(180deg, #0d1427, #0a0f1e);
+  border:1px solid #1f2937; border-radius:20px; padding:18px; box-shadow:0 10px 30px #00000060;
+}
+
+.grid{ display:grid; gap:16px; }
+.grid.col-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.col-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px){ .grid.col-3{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px){ .grid.col-3, .grid.col-2{ grid-template-columns: 1fr; } }
+
+.btn{
+  background: linear-gradient(180deg, #121a33, #0b1222);
+  border:1px solid #233046; color:var(--text);
+  padding:10px 14px; border-radius:14px; cursor:pointer; font-weight:600; transition:.2s;
+}
+.btn:hover{ transform: translateY(-1px); box-shadow:0 8px 18px #0008; border-color:#33507a; }
+.btn.primary{ border-color:#1d3b4d; background: linear-gradient(180deg, #11354a, #0c2531); box-shadow: inset 0 0 0 1px #22d3ee40; }
+.btn.good{ border-color:#17412a; background: linear-gradient(180deg, #134e2f, #0a2216); }
+.btn.bad{ border-color:#4a1b1b; background: linear-gradient(180deg, #4a1313, #2a0a0a); }
+
+.input, textarea{
+  width:100%; padding:12px 14px; background:#0a1020; border:1px solid #1f2937; color:var(--text);
+  border-radius:14px; outline:none; resize:vertical; min-height:60px;
+}
+.label{ color:var(--muted); font-size:14px; }
+
+.kpi{
+  display:flex; gap:10px; align-items:center; padding:10px 12px; border:1px dashed #334155; border-radius:14px;
+}
+
+.badge{ display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; font-size:12px; color:var(--muted); }
+.badge.good{ border-color:#14532d; color:#86efac; }
+.badge.bad{ border-color:#7f1d1d; color:#fecaca; }
+.badge.warn{ border-color:#4f3d13; color:#fde68a; }
+
+/* Game Cards */
+.game-card{ display:flex; flex-direction:column; gap:12px; }
+.game-title{ font-weight:800; letter-spacing:.2px; }
+.game-desc{ color:var(--muted); font-size:14px; }
+.game-meta{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.score{ font-weight:700; }
+
+/* Whack-a-Stress */
+.whack-grid{ display:grid; grid-template-columns: repeat(3, 90px); grid-template-rows: repeat(3, 90px); gap:12px; justify-content:center; margin:12px 0 10px; }
+.hole{ width:90px; height:90px; border-radius:14px; background:#0a1328; border:1px solid #233046; position:relative; overflow:hidden; }
+.mole{ position:absolute; inset:auto auto 0 0; right:0; height:0; background: radial-gradient(40px 30px at 50% 60%, #ffbaba, #e45c5c);
+       border-top-left-radius:14px; border-top-right-radius:14px; display:flex; align-items:center; justify-content:center; color:#000;
+       box-shadow: inset 0 -6px 0 0 #00000033; }
+.mole.show{ height:65px; transition: height .1s ease-out; }
+.mole span{ font-size:28px; }
+
+/* Canvas area */
+.canvas-wrap{ display:flex; flex-direction:column; gap:10px; align-items:center; }
+canvas{ background:#0a1020; border-radius:16px; border:1px solid #1f2937; box-shadow: inset 0 0 40px #0006; }
+
+/* Quiz */
+.quiz-q{ font-weight:700; margin-bottom:8px; }
+.quiz-opt{ display:block; margin:6px 0; padding:10px 12px; border-radius:12px; border:1px solid #2b3b55; background:#0a1328; cursor:pointer; }
+.quiz-opt:hover{ border-color:#3f5f8c; }
+.quiz-correct{ border-color:#14532d; background:#0c1f16; }
+.quiz-wrong{ border-color:#4a1313; background:#220d0d; }
+
+/* Toast */
+.toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:18px; background:#0b1222; border:1px solid #1f2937; padding:8px 12px; border-radius:12px; color:var(--muted); box-shadow:0 10px 30px #0008; }
